@@ -1,0 +1,13 @@
+<Configuration monitorInterval="30">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{[%d{HH:mm:ss.SSS}] | %-5p | %-32.42c{1} | %m%n}{FATAL=red blink, ERROR=red blink, WARN=yellow bold, INFO=green bold, DEBUG=white, TRACE=blue}"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
