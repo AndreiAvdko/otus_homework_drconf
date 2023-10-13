@@ -9,16 +9,29 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    log4jcoreVersion='2.20.0'
+    log4jVersion='2.20.0'
+    webdrivermanagerVersion='5.5.3'
+    seleniumVersion='4.13.0'
+    junitVersion='5.10.0'
+}
+
 dependencies {
-    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
-    implementation 'io.github.bonigarcia:webdrivermanager:5.5.3'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.13.0'
-    testImplementation 'org.apache.logging.log4j:log4j-slf4j2-impl:2.20.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    implementation "org.apache.logging.log4j:log4j-core:${log4jcoreVersion}"
+    implementation "io.github.bonigarcia:webdrivermanager:${webdrivermanagerVersion}"
+    implementation "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
+    testImplementation "org.apache.logging.log4j:log4j-slf4j2-impl:${log4jVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+    testImplementation("org.assertj:assertj-core:3.24.2")
 }
 
 test {
     useJUnitPlatform()
+
+    println "STARTING TESTS"
+
+    systemProperties = System.properties
 }
 
 tasks.withType(JavaCompile).configureEach {
