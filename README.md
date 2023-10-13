@@ -1,3 +1,9 @@
+## Запуск тестов
+- Запуск тестов с параметрами определёнными в gradle.properties (логин и пароль): `gradle clean test`
+- Запуск со своими параметрами: `gradle clean test -Dlogin=yesakas564@gronasu.com -Dpassword=1.yjdsqgfhjkM`, где
+    - login=yesakas564@gronasu.com - __логин__ (возможно потребуется указать в кавычках)
+    - password=1.yjdsqgfhjkM - __пароль__
+
 ## Домашнее задание 
 ### Задание 1
 1. Открыть Chrome в headless режиме
