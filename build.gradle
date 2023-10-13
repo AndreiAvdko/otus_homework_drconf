@@ -15,6 +15,7 @@ ext {
     webdrivermanagerVersion='5.5.3'
     seleniumVersion='4.13.0'
     junitVersion='5.10.0'
+    assertjVersion='3.24.2'
 }
 
 dependencies {
@@ -23,7 +24,7 @@ dependencies {
     implementation "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
     testImplementation "org.apache.logging.log4j:log4j-slf4j2-impl:${log4jVersion}"
     testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
-    testImplementation("org.assertj:assertj-core:3.24.2")
+    testImplementation "org.assertj:assertj-core:${assertjVersion}"
 }
 
 test {
