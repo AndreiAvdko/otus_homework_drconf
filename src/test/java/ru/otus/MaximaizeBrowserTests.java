@@ -20,7 +20,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
     4. Вывести в лог все cookie
 */
 public class MaximaizeBrowserTests {
-    WebDriver webDriver;
+    private WebDriver webDriver;
     private final String BASE_URL = "https://otus.ru";
 
     @BeforeAll

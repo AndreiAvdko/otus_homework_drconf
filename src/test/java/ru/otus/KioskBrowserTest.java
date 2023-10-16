@@ -22,8 +22,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 */
 
 public class KioskBrowserTest {
-    WebDriver webDriver;
-    public final String SITE_URL = "https://demo.w3layouts.com/demos_new/template_demo/03-10-2020" +
+    private WebDriver webDriver;
+    private final String SITE_URL = "https://demo.w3layouts.com/demos_new/template_demo/03-10-2020" +
                                     "/photoflash-liberty-demo_Free/685659620/web" +
                                     "/index.html?_ga=2.181802926.889871791.1632394818-2083132868.1632394818";
 
@@ -39,20 +39,18 @@ public class KioskBrowserTest {
 
     @Test
     @DisplayName("Checking the opening of an image in a modal window")
-    public void checkThatPictureWasOpenedInMidaleWindow() throws InterruptedException {
+    public void checkThatPictureWasOpenedInMidaleWindow() {
         webDriver.get(SITE_URL);
-
-        List<WebElement> photosWebElements = webDriver.findElements(new By.ByCssSelector("span.image-block"));
-
+        List<WebElement> photosWebElements = webDriver.findElements(new By.ByCssSelector("span.image-block > a"));
         int randomPhotoNumber = new Random().nextInt(0, photosWebElements.size());
-        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView(true);", photosWebElements.get(randomPhotoNumber));
-        Thread.sleep(1000);
 
         assertThat(new Waiters(webDriver).
                 waitForCondition(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.pp_pic_holder"))))
                 .as("Check that modal window is not displayed")
                 .isFalse();
-        photosWebElements.get(randomPhotoNumber).click();
+
+        ((JavascriptExecutor) webDriver).executeScript(String.format("$('span.image-block > a')[%s].click()", randomPhotoNumber));
+
         WebElement pictureWindow = webDriver.findElement(By.cssSelector("div.pp_pic_holder"));
         assertThat(pictureWindow.isDisplayed())
                 .as("Modal window is displayed")

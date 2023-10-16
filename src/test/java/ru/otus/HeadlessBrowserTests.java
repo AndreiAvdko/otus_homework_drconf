@@ -17,7 +17,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 */
 
 public class HeadlessBrowserTests {
-    WebDriver webDriver;
+    private WebDriver webDriver;
     private final String BASE_URL = "https://duckduckgo.com";
 
     @BeforeAll
